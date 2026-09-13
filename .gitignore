@@ -1,0 +1,47 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Test output and local test files
+tests/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter temporary files and generated notebooks
+.ipynb_checkpoints/
+artifacts/*.html
+artifacts/*.png
+notebooks/test.ipynb
+notebooks/V1.ipynb
+src/demo.ipynb
+
+# Trained models, metrics, and temporary backups
+artifacts/*
+!artifacts/.gitkeep
+
+# Local datasets (large source files)
+datasets/*.csv
+
+# Logs and local environment files
+*.log
+.env
+.env.*
+!.env.example
+
+# Legacy helper modules currently not imported by the API
+src/stores.py
+src/oil.py
+src/holidays.py
+src/train_test_split.py
+src/evaluate_model.py
+
+# Virtual environments
+.venv/

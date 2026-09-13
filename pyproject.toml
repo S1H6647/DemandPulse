@@ -1,0 +1,38 @@
+[project]
+name = "demandpulse"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sanjit Hyanju", email = "sanjithyanju99@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "joblib>=1.6.0",
+    "numpy>=2.5.3",
+    "pandas>=3.0.5",
+    "scikit-learn>=1.9.1",
+    "uvicorn[standard]>=0.53.0",
+    "xgboost>=3.4.1",
+]
+
+[project.scripts]
+demandpulse = "demandpulse:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.basedpyright]
+typeCheckingMode = "standard"  # Options: off, basic, standard, strict, all
+venvPath = "."
+venv = ".venv"
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pip-check-reqs>=3.1.0",
+]
