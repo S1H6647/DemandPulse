@@ -1,0 +1,11 @@
+from fastapi import APIRouter
+
+router = APIRouter(
+    prefix="/health",
+    tags=["health"],
+)
+
+
+@router.get("")
+async def root():
+    return {"message": "server is running..."}
