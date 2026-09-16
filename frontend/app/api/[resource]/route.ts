@@ -16,7 +16,7 @@ async function proxy(
   }
   try {
     const response = await fetch(
-      `${(process.env.BACKEND_URL || "http://127.0.0.1:8000").replace(/\/$/, "")}${endpoints[resource]}`,
+      `${(process.env.BACKEND_URL || "https://demandpulse-zgbx.onrender.com").replace(/\/$/, "")}${endpoints[resource]}`,
       {
         method: request.method,
         headers: { "Content-Type": "application/json" },

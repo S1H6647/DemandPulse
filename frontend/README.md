@@ -22,9 +22,10 @@ Open http://localhost:3000. The backend needs the CSVs and model described in th
 root README. Node.js 20.9 or newer is required.
 
 The Next.js server proxies `/api/options` and `/api/forecast` to FastAPI, avoiding
-browser CORS setup. Set `BACKEND_URL` in `frontend/.env.local` if the backend runs
-elsewhere (see `.env.example`). This variable is server-only. Restart Next.js after
-changing it. Requests time out after 30 seconds and display a retryable error.
+browser CORS setup. The deployed default is `https://demandpulse-zgbx.onrender.com`.
+Set `BACKEND_URL` in `frontend/.env.local` if the backend runs elsewhere (see
+`.env.example`). This variable is server-only. Restart Next.js after changing it.
+Requests time out after 30 seconds and display a retryable error.
 
 ```sh
 npm run typecheck
