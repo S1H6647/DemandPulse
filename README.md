@@ -170,6 +170,22 @@ The datasets and saved model must exist before startup. Restart the server after
 updating either: both are loaded at startup. `DATASET_DIR` and `MODEL_PATH` override
 the defaults `datasets/` and `artifacts/V2_models/xgb_best_v2.joblib`.
 
+For Render, the backend downloads missing runtime assets from the Hugging Face
+Dataset repository `S1H6647/demandpulse` at startup. Set these Render environment
+variables when using a different or private repository:
+
+```text
+HF_DATASET_REPO=S1H6647/demandpulse
+HF_DATASET_REVISION=main
+HF_TOKEN=<read-token-for-a-private-repository>
+```
+
+The repository should contain `train.csv`, `stores.csv`, `transactions.csv`,
+`holidays_events.csv`, `oil.csv`, and `xgb_best_v2.joblib` at its root. If you
+uploaded them under a folder, set `HF_DATASET_PREFIX` to that folder. Set
+`HF_MODEL_FILE` if the model has a different filename. Existing local files are
+reused, so local development does not require a Hugging Face token.
+
 Interactive API documentation is at `http://127.0.0.1:8000/docs`.
 `GET /health` returns a server status message.
 

@@ -6,11 +6,13 @@ from fastapi import FastAPI
 
 from app.api.routes import forecasts, health
 from app.core.config import DATASET_DIR, MODEL_PATH
+from app.runtime_assets import ensure_runtime_assets
 
 
 # Load the dataset on startup
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    ensure_runtime_assets(DATASET_DIR, MODEL_PATH)
     app.state.model = joblib.load(MODEL_PATH)
 
     app.state.datasets = {
