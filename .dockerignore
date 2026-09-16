@@ -1,0 +1,9 @@
+.git
+.venv
+frontend
+notebooks
+datasets
+artifacts
+tests
+__pycache__
+*.pyc

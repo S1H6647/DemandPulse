@@ -8,7 +8,6 @@ import urllib.request
 from pathlib import Path
 from urllib.parse import quote
 
-
 ASSET_FILES = (
     "train.csv",
     "stores.csv",
@@ -18,7 +17,9 @@ ASSET_FILES = (
 )
 
 
-def _download(repo_id: str, revision: str, remote_name: str, destination: Path, token: str | None) -> None:
+def _download(
+    repo_id: str, revision: str, remote_name: str, destination: Path, token: str | None
+) -> None:
     url = (
         f"https://huggingface.co/datasets/{quote(repo_id, safe='/')}"
         f"/resolve/{quote(revision, safe='')}/{quote(remote_name, safe='/')}?download=true"
@@ -30,7 +31,10 @@ def _download(repo_id: str, revision: str, remote_name: str, destination: Path, 
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_name(f".{destination.name}.download")
     try:
-        with urllib.request.urlopen(request, timeout=300) as response, temporary.open("wb") as output:
+        with (
+            urllib.request.urlopen(request, timeout=300) as response,
+            temporary.open("wb") as output,
+        ):
             while chunk := response.read(1024 * 1024):
                 output.write(chunk)
         temporary.replace(destination)
@@ -62,5 +66,7 @@ def ensure_runtime_assets(dataset_dir: Path, model_path: Path) -> None:
             _download(repo_id, revision, remote_name, destination, token)
 
     if not model_path.exists():
-        remote_name = f"{remote_prefix}/{remote_model}" if remote_prefix else remote_model
+        remote_name = (
+            f"{remote_prefix}/{remote_model}" if remote_prefix else remote_model
+        )
         _download(repo_id, revision, remote_name, model_path, token)
